@@ -1,6 +1,4 @@
 using System;
-using System.IO;
-using System.Text;
 class Program
 {
     static void Main(string[] args)
@@ -19,6 +17,8 @@ class Program
                 myjournal.Display();
             } else if(choice == 3){
                 myjournal.SaveJournal();
+            } else if(choice == 4){
+                myjournal.LoadJournal();
             }
         } while (choice !=5);
     }
