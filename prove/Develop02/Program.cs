@@ -7,13 +7,12 @@ class Program
     {
         Journal myjournal = new Journal();
         int choice = 0;
+        Console.Clear();
         do
         {
-            Console.Clear();
             Console.WriteLine($"\nMain Menu\nWhat would you like to do?\n1.New Journal Entry\n2. Display Journal\n3. Save Journal to File\n4. Load Journal from File\n5. Exit");
             Console.WriteLine("Please enter a number (1-5):");
             choice = int.Parse(Console.ReadLine());
-
             if(choice == 1){
                 myjournal.NewEntry();
             } else if(choice == 2){

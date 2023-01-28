@@ -16,5 +16,6 @@ public class JournalPrompt{
         _prompt = prompts[rnd.Next(prompts.Count-1)];
         Console.WriteLine($"\n{_prompt} ");
         _response = Console.ReadLine();
+        Console.Clear();
     }
 }

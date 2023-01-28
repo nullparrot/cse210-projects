@@ -13,6 +13,7 @@ public class Journal {
     }
 
     public void Display(){
+        Console.Clear();
         Console.WriteLine("==============================");
         foreach(Entry ent in _journal){
             Console.WriteLine("-------------------");
