@@ -13,7 +13,7 @@ public class Journal {
     }
 
     public void Display(){
-        Console.WriteLine("");
+        Console.WriteLine("==============================");
         foreach(Entry ent in _journal){
             Console.WriteLine("-------------------");
             foreach(string line in ent._entry){
@@ -21,5 +21,18 @@ public class Journal {
             }
             Console.WriteLine("-------------------");
         }
+        Console.WriteLine("==============================");
+    }
+
+    public void SaveJournal(){
+        string myJSON;
+        
+        List<string> assemble = new List<string>();
+        foreach(Entry ent in _journal){
+            assemble.Add("["+'"'+string.Join('"'+","+'"',ent._entry.ToArray())+'"'+"]"); 
+        }
+        myJSON = "["+string.Join(",",assemble.ToArray())+"]";
+        using(FileStream fs = File.Create("MyJournal.json"));
+        File.WriteAllText("MyJournal.json",myJSON);
     }
 }
