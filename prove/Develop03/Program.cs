@@ -4,6 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop03 World!");
+        CSVParser mycsv = new CSVParser("scriptures.csv");
+        List<string> thescriptures = mycsv.GetLines();
+        foreach(string line in thescriptures){
+            Console.WriteLine(line);
+        }
     }
 }
