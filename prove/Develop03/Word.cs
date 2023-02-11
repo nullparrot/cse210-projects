@@ -2,11 +2,11 @@ using System.Text.RegularExpressions;
 public class Words
 {
     private List<string> _verse = new List<string>();
-    private List<int> _versetracker = new List<int>();
-    private string _completeverse;
+    private List<int> _verseTracker = new List<int>();
+    private string _completeVerse;
     public Words(string scripture)
     {
-        _completeverse = scripture;
+        _completeVerse = scripture;
         int tempcounter = 0;
         foreach (string word in scripture.Split(" "))
         {
@@ -17,25 +17,25 @@ public class Words
             }
             else
             {
-                _versetracker.Add(tempcounter);
+                _verseTracker.Add(tempcounter);
                 tempcounter++;
             }
         };
     }
     public string GetVerse()
     {
-        _completeverse = String.Join(" ", _verse);
-        _completeverse = Regex.Replace(_completeverse, "[|]", Environment.NewLine);
-        return _completeverse;
+        _completeVerse = String.Join(" ", _verse);
+        _completeVerse = Regex.Replace(_completeVerse, "[|]", Environment.NewLine);
+        return _completeVerse;
     }
     public void SetVerse(string scripture)
     {
-        _completeverse = scripture;
+        _completeVerse = scripture;
         int tempcounter = 0;
         foreach (string word in scripture.Split(" "))
         {
             _verse.Add(word);
-            _versetracker.Add(tempcounter);
+            _verseTracker.Add(tempcounter);
             tempcounter++;
         };
     }

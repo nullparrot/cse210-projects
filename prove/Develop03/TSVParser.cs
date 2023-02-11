@@ -1,28 +1,28 @@
 public class TSVParser{
     
-    private string _filepath;
-    private List<string> _filecontents = new List<string>();
+    private string _filePath;
+    private List<string> _fileContents = new List<string>();
     public TSVParser(string FilePath){
-        _filepath = FilePath;
-        foreach(string line in File.ReadAllLines(_filepath)){
-            _filecontents.Add(line);
+        _filePath = FilePath;
+        foreach(string line in File.ReadAllLines(_filePath)){
+            _fileContents.Add(line);
         }
     }
     public List<string> GetLines(){
-        foreach(string line in File.ReadAllLines(_filepath)){
-            _filecontents.Add(line);
+        foreach(string line in File.ReadAllLines(_filePath)){
+            _fileContents.Add(line);
         }
-        return _filecontents;
+        return _fileContents;
     }
     public string GetFilePath(){
-        return _filepath;
+        return _filePath;
     }
     public void SetFilePath(string FilePath){
-        _filepath = FilePath;
+        _filePath = FilePath;
     }
     public string GetRandomLine(){
         Random rando = new Random();
-        string line  = _filecontents[rando.Next(_filecontents.Count())];
+        string line  = _fileContents[rando.Next(_fileContents.Count())];
         return line;
         
     }
