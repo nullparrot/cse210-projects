@@ -1,5 +1,5 @@
 using System;
-
+using System.Text.RegularExpressions;
 class Program
 {
     static void Main(string[] args)
@@ -8,23 +8,27 @@ class Program
         Words myword = new Words(myscripture.GetScripture());
         string moving = "";
         bool doloop = true;
-        string progresscheck = "";
-        string removedword = "";
         do
         {
             Console.Clear();
-            Console.WriteLine(progresscheck);
             Console.WriteLine(myscripture.GetReference());
             Console.WriteLine(myword.GetVerse());
-            Console.WriteLine(Environment.NewLine+"We removed the word: '"+removedword+"'");
             Console.WriteLine(Environment.NewLine+"Press enter to continue or 'quit' to finish:");
-            //moving = Console.ReadLine();
-            if(moving == "quit"){
+            moving = Console.ReadLine();
+            if (moving == "quit")
+            {
                 doloop = false;
-            } else{
-                progresscheck = myword.GetVerse();
-                removedword = myword.RemoveWord();
-                if(String.Compare(progresscheck,myword.GetVerse())<0){
+            }
+            else
+            {
+                myword.RemoveWord();
+                if (Regex.IsMatch(myword.GetVerse(), "[A-Za-z]") == false)
+                {
+                    Console.Clear();
+                    Console.WriteLine(myscripture.GetReference());
+                    Console.WriteLine(myword.GetVerse());
+                    Console.WriteLine(Environment.NewLine+"Entire verse hidden");
+                    Console.WriteLine(Environment.NewLine+"Exiting now");
                     doloop = false;
                 }
             }
