@@ -4,8 +4,8 @@ public class Scripture{
 
 
     public Scripture(){
-        _scripture = "";
-        _reference = "";
+        _scripture = "5 Trust in the Lord with all thine heart; and lean not unto thine own understanding.|6 In all thy ways acknowledge him, and he shall direct thy paths.";
+        _reference = "Proverbs 3:5-6";
     }
 
     public Scripture(string scripture){
