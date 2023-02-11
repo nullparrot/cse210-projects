@@ -4,8 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        CSVParser mycsv = new CSVParser("scriptures.csv");
-        List<string> thescriptures = mycsv.GetLines();
+        TSVParser mytsv = new TSVParser("scriptures.txt");
+        List<string> thescriptures = mytsv.GetLines();
         foreach(string line in thescriptures){
             Console.WriteLine(line);
         }

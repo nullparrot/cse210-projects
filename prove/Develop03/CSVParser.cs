@@ -1,8 +1,8 @@
-public class CSVParser{
+public class TSVParser{
     
     private string _filepath;
     private List<string> _filecontents = new List<string>();
-    public CSVParser(string FilePath){
+    public TSVParser(string FilePath){
         _filepath = FilePath;
     }
     public List<string> GetLines(){
