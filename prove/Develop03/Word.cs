@@ -8,8 +8,10 @@ public class Words{
         int tempcounter = 0;
         foreach(string word in scripture.Split(" ")){
             _verse.Add(word);
-            _versetracker.Add(tempcounter);
-            tempcounter++;
+            if(Regex.IsMatch(word,"[|0-9]+")){
+                tempcounter++;
+            }else{_versetracker.Add(tempcounter);
+            tempcounter++;}
         };
     }
     public string GetVerse(){
@@ -26,7 +28,7 @@ public class Words{
             tempcounter++;
         };
     }
-    public void RemoveWord(){
+    public string RemoveWord(){
         if(_versetracker.Count()>0){
         int wordsleft = _versetracker.Count();
         Random rando = new Random();
@@ -34,7 +36,10 @@ public class Words{
         int removalchoice = _versetracker[removalchoicestep];
         _versetracker.RemoveAt(removalchoicestep);
         string chosenword = _verse[removalchoice];
-        chosenword = Regex.Replace(chosenword,"[A-z']","_");
-        _verse[removalchoice] = chosenword;}
+        string blankedword = Regex.Replace(chosenword,"[A-z']","_");
+        _verse[removalchoice] = blankedword;
+        return chosenword;}else{
+            return "false";
+        }
     }
 }
