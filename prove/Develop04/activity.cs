@@ -6,15 +6,15 @@ public class Activity{
     private string _description;
 
     public Activity(string activity, string description){
-        ActivityWelcome();
         _activity = activity;
         _description = description;
+        ActivityWelcome();
         _startTime = DateTime.Now.Ticks/TimeSpan.TicksPerSecond;
         _endTime = _startTime+_duration;
     }
 
     private void ActivityWelcome(){
-        Console.WriteLine("Thank you for choosing an activity.");
+        Console.WriteLine($"Thank you for choosing the {_activity.ToLower()}.");
         Console.Write("How long would you like to participate in the activity (seconds): ");
         _duration = int.Parse(Console.ReadLine());
     }

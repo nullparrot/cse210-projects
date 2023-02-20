@@ -5,9 +5,16 @@ class Program
     static void Main(string[] args)
     {
         Menu activityMenu = new Menu();
-        string chosenActivity = activityMenu.ChooseOne();
-        Console.WriteLine(Environment.NewLine+chosenActivity);
-        Activity letsGo = new Activity(chosenActivity,"Empty EDEsctipion");
-        letsGo.Pause(10);
+        switch (activityMenu.ChooseOne()){
+            case "Breathing Activity":
+                Breathing inhaleExhale = new Breathing();
+                break;
+                case "Listing Activity":
+                Listing bullets = new Listing();
+                break;
+                case "Reflection Activity":
+                Reflection mirror = new Reflection();
+                break;
+        }
     }
 }
