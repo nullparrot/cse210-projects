@@ -46,3 +46,5 @@ public class WritingAssignment : Assignment{
         return _title;
     }
 }
+
+//Test line for commit tests
