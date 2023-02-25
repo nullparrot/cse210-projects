@@ -8,7 +8,6 @@ public class Menu{
         return _choice;
     }
     public string ChooseOne(){
-        Console.Clear();
         Console.WriteLine("Please choose an activity to do:");
         int tempcount = 1;
         foreach (string option in _options)

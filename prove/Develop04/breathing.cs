@@ -24,6 +24,7 @@ public class Breathing : Activity{
                 inhale = true;
             }
         } while (s.Elapsed < TimeSpan.FromSeconds(dura));
+        ActivityGoodbye();
     }
     private void CountDown(){
         

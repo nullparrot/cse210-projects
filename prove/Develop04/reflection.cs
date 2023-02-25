@@ -40,5 +40,6 @@ public class Reflection : Activity
         Console.Clear();
         Console.WriteLine($"Thanks for participating.\nWe hope you enjoyed your reflecting!");
         Pause("Thinking",5,1);
+        ActivityGoodbye();
     }
 }

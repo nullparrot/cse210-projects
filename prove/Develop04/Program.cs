@@ -6,6 +6,7 @@ class Program
     {
         Menu activityMenu = new Menu();
         bool running = true;
+        Console.Clear();
         do
         {
             switch (activityMenu.ChooseOne()){

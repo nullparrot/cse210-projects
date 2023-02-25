@@ -25,5 +25,6 @@ public class Listing : Activity{
         Console.Clear();
         Console.WriteLine($"Thanks for participating.\nYou provided {_responses.Count} response(s).");
         Pause("Thinking",5,1);
+        ActivityGoodbye();
     }
 }
