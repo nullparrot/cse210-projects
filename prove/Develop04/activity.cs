@@ -23,7 +23,7 @@ public class Activity{
     }
     public void ActivityGoodbye(){
         Console.Clear();
-        Console.WriteLine("Thanks for participating. Have a fantastic day!");
+        Console.WriteLine("What would you like to do now?S");
     }
     public void Pause(string message, int time,double interval){
         Console.Write("\r"+message+"                          ");
