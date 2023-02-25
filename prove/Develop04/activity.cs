@@ -1,7 +1,6 @@
+using System.Diagnostics;
 public class Activity{
     private int _duration;
-    private long _startTime;
-    private long _endTime;
     private string _activity;
     private string _description;
 
@@ -9,39 +8,48 @@ public class Activity{
         _activity = activity;
         _description = description;
         ActivityWelcome();
-        _startTime = DateTime.Now.Ticks/TimeSpan.TicksPerSecond;
-        _endTime = _startTime+_duration;
     }
 
     private void ActivityWelcome(){
         Console.WriteLine($"Thank you for choosing the {_activity.ToLower()}.");
         Console.Write("How long would you like to participate in the activity (seconds): ");
         _duration = int.Parse(Console.ReadLine());
+        Console.WriteLine($"Thank you. We'll stop the activity after {_duration} seconds.");
+        Pause("Thinking",5,0.5);
+        Console.Clear();
+        Console.WriteLine(_description);
     }
     public void ActivityGoodbye(){
         Console.Clear();
         Console.WriteLine("Thanks for participating. Have a fantastic day!");
     }
-    public void Pause(int time){
-        long stoptime = DateTime.Now.Ticks/TimeSpan.TicksPerSecond + time;
-        Console.Write("Waiting");
+    public void Pause(string message, int time,double interval){
+        Console.Write("\r"+message+"                          ");
+        int messageLength = message.Length+1;
         int currentLine = Console.GetCursorPosition().Top;
-
+        Stopwatch s = new Stopwatch();
+        s.Start();
+        int intervalCount = 1;
         do
         {
-            Console.SetCursorPosition(8,currentLine);
-            Console.Write("      ");
-            Thread.Sleep(300);
-            Console.SetCursorPosition(8,currentLine);
-            Console.Write(".     ");
-            Thread.Sleep(234);
-            Console.SetCursorPosition(8,currentLine);
-            Console.Write(". .   ");
-            Thread.Sleep(234);
-            Console.SetCursorPosition(8,currentLine);
-            Console.Write(". . . ");
-            Thread.Sleep(234);
-        } while (stoptime>DateTime.Now.Ticks/TimeSpan.TicksPerSecond);
+            Console.SetCursorPosition(messageLength,currentLine);
+            switch (intervalCount%4){
+                case 0:
+                Console.Write(" || ");
+                break;
+                case 1:
+                Console.Write(" // ");
+                break;
+                case 2:
+                Console.Write(" == ");
+                break;
+                case 3:
+                Console.Write(" \\\\ ");
+                break;
+            }
+            intervalCount++;
+            Thread.Sleep((int)Math.Round(interval*1000));
+        } while (s.Elapsed < TimeSpan.FromSeconds(time));
     }
 
     public int GetDuration(){
@@ -49,15 +57,17 @@ public class Activity{
     }
 
     public string ChoosePrompt(List<string> prompts){
-        Console.Clear();
-        Console.WriteLine("Please choose a prompt for the provided list:");
-        int tempcount = 1;
-        foreach (string option in prompts)
-        {
-            Console.WriteLine($"{tempcount} - {option}");
-            tempcount++;
-        }
-        Console.Write("Choice (ex. 1): ");
-        return prompts[ int.Parse(Console.ReadLine())-1];
+        // Console.Clear();
+        // Console.WriteLine("Please choose a prompt for the provided list:");
+        // int tempcount = 1;
+        // foreach (string option in prompts)
+        // {
+        //     Console.WriteLine($"{tempcount} - {option}");
+        //     tempcount++;
+        // }
+        // Console.Write("Choice (ex. 1): ");
+        // return prompts[ int.Parse(Console.ReadLine())-1];
+        Random rando = new Random();
+        return prompts[rando.Next(prompts.Count())];
     }
 }

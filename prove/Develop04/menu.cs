@@ -1,6 +1,6 @@
 public class Menu{
     private string _choice;
-    private List<string> _options = new List<string>{"Reflection Activity","Listing Activity","Breathing Activity"};
+    private List<string> _options = new List<string>{"Reflection Activity","Listing Activity","Breathing Activity","Quit"};
     public List<string> ListOptions(){
         return _options;
     }
