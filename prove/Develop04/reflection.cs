@@ -1,3 +1,4 @@
+using System.Diagnostics;
 public class Reflection : Activity
 {
     private string _description = "Think about your day, and try not to reflect on the bad things...";
@@ -21,8 +22,23 @@ public class Reflection : Activity
     };
     private int _questionGap = 10;
 
-    public Reflection() : base("Reflection Activity", "Think about your day, and try not to reflect on the bad things...")
+    public Reflection() : base("Reflection Activity", "In this activity you will be given a random prompt and then have time top reflect on it and ponder your answers.\nYou will also be provide with follow up questions to consider.")
     {
         _prompt = ChoosePrompt(_prompts);
+        Console.Clear();
+        Console.WriteLine(_prompt);
+        Stopwatch s = new Stopwatch();
+        int dura = GetDuration();
+        Pause("Please use this time to ponder",10,1);
+        s.Start();
+        do
+        {
+            Console.Write("\r                                          \n");
+            Console.WriteLine(ChoosePrompt(_questions));
+            Pause("Please use this time to ponder",10,1);
+        } while (s.Elapsed < TimeSpan.FromSeconds(dura-10));
+        Console.Clear();
+        Console.WriteLine($"Thanks for participating.\nWe hope you enjoyed your reflecting!");
+        Pause("Thinking",5,1);
     }
 }

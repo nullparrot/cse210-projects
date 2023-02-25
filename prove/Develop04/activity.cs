@@ -14,10 +14,12 @@ public class Activity{
         Console.WriteLine($"Thank you for choosing the {_activity.ToLower()}.");
         Console.Write("How long would you like to participate in the activity (seconds): ");
         _duration = int.Parse(Console.ReadLine());
+        Console.Clear();
         Console.WriteLine($"Thank you. We'll stop the activity after {_duration} seconds.");
-        Pause("Thinking",5,0.5);
+        Pause("Thinking",5,1);
         Console.Clear();
         Console.WriteLine(_description);
+        Pause("Thinking",5,1);
     }
     public void ActivityGoodbye(){
         Console.Clear();
@@ -51,6 +53,20 @@ public class Activity{
             Thread.Sleep((int)Math.Round(interval*1000));
         } while (s.Elapsed < TimeSpan.FromSeconds(time));
     }
+
+    public void CountDown(string message, int time){
+        Console.Write("\r"+message+"                          ");
+        int messageLength = message.Length+1;
+        int currentLine = Console.GetCursorPosition().Top;
+        do
+        {
+            Console.SetCursorPosition(messageLength,currentLine);
+            Console.Write($" {time} ");
+            time--;
+            Thread.Sleep(1000);
+        } while (time>-1);
+    }
+
 
     public int GetDuration(){
         return _duration;
