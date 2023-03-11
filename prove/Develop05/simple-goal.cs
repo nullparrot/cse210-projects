@@ -64,4 +64,8 @@ public class SimpleGoal : Goal{
             break;
         }
     }
+    public override string ExportGoal()
+    {
+        return $"SIMPLE GOAL||{GetGoal()}||{GetValue()}||{_complete}";
+    }
 }

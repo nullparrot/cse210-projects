@@ -52,4 +52,8 @@ public class EternalGoal : Goal{
             break;
         }
     }
+    public override string ExportGoal()
+    {
+        return $"ETERNAL GOAL||{GetGoal()}||{GetValue()}||{_count}";
+    }
 }

@@ -30,4 +30,5 @@ public abstract class Goal
     public abstract string DisplayGoal();
     public abstract int GiveReward();
     public abstract void UpdateGoal();
+    public abstract string ExportGoal();
 }

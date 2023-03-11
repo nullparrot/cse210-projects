@@ -96,4 +96,8 @@ public class ChecklistGoal : Goal
             break;
         }
     }
+    public override string ExportGoal()
+    {
+        return $"SIMPLE GOAL||{GetGoal()}||{GetValue()}||{_count}||{_progress}||{_bonus}";
+    }
 }
