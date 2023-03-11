@@ -18,7 +18,11 @@ class Program
             switch (mainMenu.ChooseOne("Please choose one:"))
             {
                 case "See Goals":
-
+                Console.Clear();
+                    foreach (Goal oneGoal in myGoals)
+                    {
+                        Console.WriteLine(oneGoal.DisplayGoal());
+                    }
                     break;
                 case "Create Goals":
                     Console.WriteLine("This will start the process of creating a new goal");
