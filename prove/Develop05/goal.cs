@@ -9,7 +9,7 @@ public abstract class Goal
     }
 
     public Goal(){
-        
+
     }
     public void SetValue(int value)
     {
@@ -28,8 +28,6 @@ public abstract class Goal
         return _goal;
     }
     public abstract string DisplayGoal();
-    public virtual int GiveReward(){
-        return _value;
-    }
-
+    public abstract int GiveReward();
+    public abstract void UpdateGoal();
 }

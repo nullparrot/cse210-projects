@@ -30,4 +30,38 @@ public class SimpleGoal : Goal{
         }
         
     }
+    public override int GiveReward()
+    {
+        switch(_complete){
+            case true:
+            return GetValue();
+            case false:
+            return 0;
+        }
+    }
+    public override void UpdateGoal()
+    {
+        Console.Clear();
+        Console.WriteLine(GetGoal());
+        Console.Write("Have you completed this goal? (Yes or No)");
+        switch(Console.ReadLine()){
+            case "Yes":
+            case "y":
+            case "Y":
+            case "YES":
+            case "yes":
+            _complete = true;
+            break;
+            case "No":
+            case "n":
+            case "N":
+            case "NO":
+            case "no":
+            _complete = false;
+            break;
+            default:
+            Console.WriteLine("Error, unexpected response.");
+            break;
+        }
+    }
 }

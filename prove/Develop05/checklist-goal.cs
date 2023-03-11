@@ -61,4 +61,39 @@ public class ChecklistGoal : Goal
             return $"[{_progress}/{_count}] - {GetGoal()} - {_progress * GetValue()} Point(s)";
         }
     }
+    public override int GiveReward()
+    {
+        if (_progress == _count)
+        {
+            return (_progress*GetValue())+_bonus;
+        }
+        else
+        {
+            return _progress * GetValue();
+        }
+    }
+    public override void UpdateGoal()
+    {
+        Console.Clear();
+        Console.WriteLine(GetGoal());
+        Console.Write("Did you just complete this goal? (Yes or No)");
+        switch(Console.ReadLine()){
+            case "Yes":
+            case "y":
+            case "Y":
+            case "YES":
+            case "yes":
+            _progress++;
+            break;
+            case "No":
+            case "n":
+            case "N":
+            case "NO":
+            case "no":
+            break;
+            default:
+            Console.WriteLine("Error, unexpected response.");
+            break;
+        }
+    }
 }

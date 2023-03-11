@@ -4,25 +4,26 @@ class Program
 {
     static void Main(string[] args)
     {
-        // ChecklistGoal testGoal = new ChecklistGoal("Complete the assigment",100,4,1,200);
-        // Console.WriteLine(testGoal.DisplayGoal());
-        // testGoal.SetProgress(4);
-        // Console.WriteLine(testGoal.DisplayGoal());
-
-        Menu mainMenu = new Menu("See Goals", "Create Goals", "Export Goals", "Load Goals", "Quit");
+        Menu mainMenu = new Menu("See Goals", "Create Goals","Update Goal","Export Goals", "Load Goals", "Quit");
         Menu goalMenu = new Menu("Simple Goal", "Checklist Goal", "Eternal Goal");
         List<Goal> myGoals = new List<Goal>();
+        List<string> writtenGoals = new List<string>();
         bool keepGoing = true;
+        int points = 0;
+        int chosenGoal;
         do
         {
             switch (mainMenu.ChooseOne("Please choose one:"))
             {
                 case "See Goals":
-                Console.Clear();
+                    Console.Clear();
+                    points = 0;
                     foreach (Goal oneGoal in myGoals)
                     {
                         Console.WriteLine(oneGoal.DisplayGoal());
+                        points += oneGoal.GiveReward();
                     }
+                    Console.WriteLine($"Total Points: {points}");
                     break;
                 case "Create Goals":
                     Console.WriteLine("This will start the process of creating a new goal");
@@ -42,6 +43,17 @@ class Program
                             Console.WriteLine("Incorrect value entered. Please enter a number.");
                             break;
                     }
+                    break;
+                    case "Update Goal":
+                    Console.Clear();
+                    writtenGoals.Clear();
+                    foreach (Goal oneGoal in myGoals)
+                    {
+                        writtenGoals.Add(oneGoal.DisplayGoal());
+                    }
+                    Menu currentGoalsMenu = new Menu(writtenGoals);
+                    currentGoalsMenu.ChooseOne("Please choose from your list of goals:");
+                    myGoals[currentGoalsMenu.GetChoiceNumber()-1].UpdateGoal();
                     break;
                 case "Export Goals":
                     Console.WriteLine("This will export your goals to a file");

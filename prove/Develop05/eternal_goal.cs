@@ -24,4 +24,32 @@ public class EternalGoal : Goal{
     {
         return $"{_count} time(s) - {GetGoal()} - {_count}*{GetValue()} = {_count*GetValue()} Point(s)";
     }
+    public override int GiveReward()
+    {
+        return _count*GetValue();
+    }
+    public override void UpdateGoal()
+    {
+        Console.Clear();
+        Console.WriteLine(GetGoal());
+        Console.Write("Did you just complete this goal? (Yes or No)");
+        switch(Console.ReadLine()){
+            case "Yes":
+            case "y":
+            case "Y":
+            case "YES":
+            case "yes":
+            _count++;
+            break;
+            case "No":
+            case "n":
+            case "N":
+            case "NO":
+            case "no":
+            break;
+            default:
+            Console.WriteLine("Error, unexpected response.");
+            break;
+        }
+    }
 }
