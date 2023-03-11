@@ -8,7 +8,7 @@ class Program
         // Console.WriteLine(testGoal.DisplayGoal());
         // testGoal.SetProgress(4);
         // Console.WriteLine(testGoal.DisplayGoal());
-        
+
         Menu mainMenu = new Menu("See Goals", "Create Goals", "Export Goals", "Load Goals", "Quit");
         Menu goalMenu = new Menu("Simple Goal", "Checklist Goal", "Eternal Goal");
         List<Goal> myGoals = new List<Goal>();
@@ -18,20 +18,24 @@ class Program
             switch (mainMenu.ChooseOne("Please choose one:"))
             {
                 case "See Goals":
-                    Console.WriteLine("This will display your active goals");
+
                     break;
                 case "Create Goals":
                     Console.WriteLine("This will start the process of creating a new goal");
                     switch (goalMenu.ChooseOne("What type of goal would you like to make?"))
                     {
                         case "Simple Goal":
-                            Console.WriteLine("Lets make a simple goal!");
+                            myGoals.Add(new SimpleGoal());
                             break;
                         case "Checklist Goal":
-                            Console.WriteLine("Lets make a checklist goal!");
+                            myGoals.Add(new ChecklistGoal());
                             break;
                         case "Eternal Goal":
-                            Console.WriteLine("Lets make an eternal goal!");
+                            myGoals.Add(new EternalGoal());
+                            break;
+                        default:
+                            Console.Clear();
+                            Console.WriteLine("Incorrect value entered. Please enter a number.");
                             break;
                     }
                     break;
@@ -43,6 +47,10 @@ class Program
                     break;
                 case "Quit":
                     keepGoing = false;
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Incorrect value entered. Please enter a number.");
                     break;
             }
         } while (keepGoing);
