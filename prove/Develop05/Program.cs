@@ -4,6 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
+        SimpleGoal testGoal = new SimpleGoal("Complete the assigment",100,false);
+        Console.WriteLine(testGoal.DisplayGoal());
+        testGoal.SetComplete(true);
+        Console.WriteLine(testGoal.DisplayGoal());
+        
         Menu mainMenu = new Menu("See Goals", "Create Goals", "Export Goals", "Load Goals", "Quit");
         Menu goalMenu = new Menu("Simple Goal", "Checklist Goal", "Eternal Goal");
         List<Goal> myGoals = new List<Goal>();
