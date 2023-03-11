@@ -2,8 +2,11 @@ public class Menu{
     private string _choice;
     private List<string> _options = new List<string>();
 
-    public Menu(List<string> options){
-        _options = options;
+    public Menu(params string[] options){
+        foreach (string option in options)
+        {
+            _options.Add(option);
+        }
     }
     public List<string> ListOptions(){
         return _options;
