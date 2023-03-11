@@ -98,6 +98,6 @@ public class ChecklistGoal : Goal
     }
     public override string ExportGoal()
     {
-        return $"SIMPLE GOAL||{GetGoal()}||{GetValue()}||{_count}||{_progress}||{_bonus}";
+        return $"CHECKLIST GOAL||{GetGoal()}||{GetValue()}||{_count}||{_progress}||{_bonus}";
     }
 }

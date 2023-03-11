@@ -1,0 +1,4 @@
+SIMPLE GOAL||asfasfga||23||False
+SIMPLE GOAL||sdfsf||22||False
+SIMPLE GOAL||asf||2||12||0||123
+ETERNAL GOAL||awrfgg||32||0

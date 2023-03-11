@@ -10,6 +10,7 @@ class Program
         List<string> writtenGoals = new List<string>();
         bool keepGoing = true;
         int points = 0;
+        string goalsExport = "my-goals-list.txt";
         do
         {
             switch (mainMenu.ChooseOne("Please choose one:"))
@@ -55,10 +56,39 @@ class Program
                     myGoals[currentGoalsMenu.GetChoiceNumber()-1].UpdateGoal();
                     break;
                 case "Export Goals":
-                    Console.WriteLine("This will export your goals to a file");
+                    Console.Clear();
+                    Console.WriteLine("Exporting your goals...");
+                    using(StreamWriter outputFile = new StreamWriter(goalsExport)){
+                        foreach (Goal oneGoal in myGoals)
+                        {
+                            outputFile.WriteLine(oneGoal.ExportGoal());
+                        }
+                    }
+                    Console.WriteLine("Done! Export complete!");
                     break;
                 case "Load Goals":
-                    Console.WriteLine("This will load your goals from a file");
+                    Console.WriteLine("Loading your goals from the file...");
+                    myGoals.Clear();
+                    string[] lines = System.IO.File.ReadAllLines(goalsExport);
+                    foreach (string line in lines)
+                    {
+                        string[] parts = line.Split("||");
+                        switch(parts[0]){
+                            case "SIMPLE GOAL":
+                            myGoals.Add(new SimpleGoal(parts[1],int.Parse(parts[2]),bool.Parse(parts[3])));
+                            break;
+                            case "ETERNAL GOAL":
+                            myGoals.Add(new EternalGoal(parts[1],int.Parse(parts[2]),int.Parse(parts[3])));
+                            break;
+                            case "CHECKLIST GOAL":
+                            myGoals.Add(new ChecklistGoal(parts[1],int.Parse(parts[2]),int.Parse(parts[3]),int.Parse(parts[4]),int.Parse(parts[5])));
+                            break;
+                            default:
+                            Console.WriteLine("ERROR! Unrecognized goal found... Skipping.");
+                            break;
+                        }
+                    }
+                    Console.WriteLine("Done! Loading complete!");
                     break;
                 case "Quit":
                     keepGoing = false;
