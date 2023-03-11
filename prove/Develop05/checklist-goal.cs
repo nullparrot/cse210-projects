@@ -9,6 +9,23 @@ public class ChecklistGoal : Goal
         _progress = progress;
         _bonus = bonus;
     }
+    public ChecklistGoal(){
+        Console.Clear();
+        Console.WriteLine("A checklist goal is something you need to do a set number of times.");
+        Console.WriteLine("What would you like to make a checklist goal for?");
+        Console.Write("> ");
+        SetGoal(Console.ReadLine());
+        Console.WriteLine("How many times do you need to do this goal?");
+        Console.Write("> ");
+        _count = int.Parse(Console.ReadLine());
+        Console.WriteLine("How many points should it be worth each time?");
+        Console.Write("> ");
+        SetValue(int.Parse(Console.ReadLine()));
+        Console.WriteLine("How many points should your completion bonus be?");
+        Console.Write("> ");
+        _bonus = int.Parse(Console.ReadLine());
+        _progress = 0;
+    }
     public void SetCount(int count)
     {
         _count = count;

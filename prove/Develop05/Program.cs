@@ -4,10 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        ChecklistGoal testGoal = new ChecklistGoal("Complete the assigment",100,4,1,200);
-        Console.WriteLine(testGoal.DisplayGoal());
-        testGoal.SetProgress(4);
-        Console.WriteLine(testGoal.DisplayGoal());
+        // ChecklistGoal testGoal = new ChecklistGoal("Complete the assigment",100,4,1,200);
+        // Console.WriteLine(testGoal.DisplayGoal());
+        // testGoal.SetProgress(4);
+        // Console.WriteLine(testGoal.DisplayGoal());
         
         Menu mainMenu = new Menu("See Goals", "Create Goals", "Export Goals", "Load Goals", "Quit");
         Menu goalMenu = new Menu("Simple Goal", "Checklist Goal", "Eternal Goal");
