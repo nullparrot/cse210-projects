@@ -10,7 +10,6 @@ class Program
         List<string> writtenGoals = new List<string>();
         bool keepGoing = true;
         int points = 0;
-        int chosenGoal;
         do
         {
             switch (mainMenu.ChooseOne("Please choose one:"))
@@ -59,7 +58,7 @@ class Program
                     Console.WriteLine("This will export your goals to a file");
                     break;
                 case "Load Goals":
-                    Console.WriteLine("This will load your goasl from a file");
+                    Console.WriteLine("This will load your goals from a file");
                     break;
                 case "Quit":
                     keepGoing = false;
