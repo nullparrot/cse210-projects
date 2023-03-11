@@ -13,9 +13,9 @@ public class SimpleGoal : Goal{
     {
         switch(_complete){
             case true:
-            return $"[Complete] - {GetGoal()} - {GetValue()} Point(s)";
+            return $"[Complete] - {GetGoal()} - {GetValue()}/{GetValue()} Point(s)";
             case false:
-            return $"[Incomplete] - {GetGoal()} - {GetValue()} Point(s)";
+            return $"[Incomplete] - {GetGoal()} - 0/{GetValue()} Point(s)";
         }
         
     }

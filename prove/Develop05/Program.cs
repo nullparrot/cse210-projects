@@ -4,9 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        SimpleGoal testGoal = new SimpleGoal("Complete the assigment",100,false);
+        ChecklistGoal testGoal = new ChecklistGoal("Complete the assigment",100,4,1,200);
         Console.WriteLine(testGoal.DisplayGoal());
-        testGoal.SetComplete(true);
+        testGoal.SetProgress(4);
         Console.WriteLine(testGoal.DisplayGoal());
         
         Menu mainMenu = new Menu("See Goals", "Create Goals", "Export Goals", "Load Goals", "Quit");
