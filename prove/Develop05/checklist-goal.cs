@@ -53,7 +53,7 @@ public class ChecklistGoal : Goal
     }
     public override string DisplayGoal()
     {
-        if (_progress == _count)
+        if (_progress >= _count)
         {
             return $"[{_progress}/{_count}] - {GetGoal()} - {(_progress * GetValue()) + _bonus} Point(s)";
         }
@@ -64,7 +64,7 @@ public class ChecklistGoal : Goal
     }
     public override int GiveReward()
     {
-        if (_progress == _count)
+        if (_progress >= _count)
         {
             return (_progress * GetValue()) + _bonus;
         }
