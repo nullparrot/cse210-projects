@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Menu mainMenu = new Menu("See Goals", "Create Goals","Update Goal","Export Goals", "Load Goals", "Quit");
+        Menu mainMenu = new Menu("See Goals", "Create Goals", "Update Goal", "Export Goals", "Load Goals", "Quit");
         Menu goalMenu = new Menu("Simple Goal", "Checklist Goal", "Eternal Goal");
         List<Goal> myGoals = new List<Goal>();
         List<string> writtenGoals = new List<string>();
@@ -44,7 +44,7 @@ class Program
                             break;
                     }
                     break;
-                    case "Update Goal":
+                case "Update Goal":
                     Console.Clear();
                     writtenGoals.Clear();
                     foreach (Goal oneGoal in myGoals)
@@ -53,12 +53,13 @@ class Program
                     }
                     Menu currentGoalsMenu = new Menu(writtenGoals);
                     currentGoalsMenu.ChooseOne("Please choose from your list of goals:");
-                    myGoals[currentGoalsMenu.GetChoiceNumber()-1].UpdateGoal();
+                    myGoals[currentGoalsMenu.GetChoiceNumber() - 1].UpdateGoal();
                     break;
                 case "Export Goals":
                     Console.Clear();
                     Console.WriteLine("Exporting your goals...");
-                    using(StreamWriter outputFile = new StreamWriter(goalsExport)){
+                    using (StreamWriter outputFile = new StreamWriter(goalsExport))
+                    {
                         foreach (Goal oneGoal in myGoals)
                         {
                             outputFile.WriteLine(oneGoal.ExportGoal());
@@ -73,19 +74,20 @@ class Program
                     foreach (string line in lines)
                     {
                         string[] parts = line.Split("||");
-                        switch(parts[0]){
+                        switch (parts[0])
+                        {
                             case "SIMPLE GOAL":
-                            myGoals.Add(new SimpleGoal(parts[1],int.Parse(parts[2]),bool.Parse(parts[3])));
-                            break;
+                                myGoals.Add(new SimpleGoal(parts[1], int.Parse(parts[2]), bool.Parse(parts[3])));
+                                break;
                             case "ETERNAL GOAL":
-                            myGoals.Add(new EternalGoal(parts[1],int.Parse(parts[2]),int.Parse(parts[3])));
-                            break;
+                                myGoals.Add(new EternalGoal(parts[1], int.Parse(parts[2]), int.Parse(parts[3])));
+                                break;
                             case "CHECKLIST GOAL":
-                            myGoals.Add(new ChecklistGoal(parts[1],int.Parse(parts[2]),int.Parse(parts[3]),int.Parse(parts[4]),int.Parse(parts[5])));
-                            break;
+                                myGoals.Add(new ChecklistGoal(parts[1], int.Parse(parts[2]), int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5])));
+                                break;
                             default:
-                            Console.WriteLine("ERROR! Unrecognized goal found... Skipping.");
-                            break;
+                                Console.WriteLine("ERROR! Unrecognized goal found... Skipping.");
+                                break;
                         }
                     }
                     Console.WriteLine("Done! Loading complete!");

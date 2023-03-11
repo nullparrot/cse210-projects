@@ -9,7 +9,8 @@ public class ChecklistGoal : Goal
         _progress = progress;
         _bonus = bonus;
     }
-    public ChecklistGoal(){
+    public ChecklistGoal()
+    {
         Console.Clear();
         Console.WriteLine("A checklist goal is something you need to do a set number of times.");
         Console.WriteLine("What would you like to make a checklist goal for?");
@@ -65,7 +66,7 @@ public class ChecklistGoal : Goal
     {
         if (_progress == _count)
         {
-            return (_progress*GetValue())+_bonus;
+            return (_progress * GetValue()) + _bonus;
         }
         else
         {
@@ -77,23 +78,24 @@ public class ChecklistGoal : Goal
         Console.Clear();
         Console.WriteLine(GetGoal());
         Console.Write("Did you just complete this goal? (Yes or No)");
-        switch(Console.ReadLine()){
+        switch (Console.ReadLine())
+        {
             case "Yes":
             case "y":
             case "Y":
             case "YES":
             case "yes":
-            _progress++;
-            break;
+                _progress++;
+                break;
             case "No":
             case "n":
             case "N":
             case "NO":
             case "no":
-            break;
+                break;
             default:
-            Console.WriteLine("Error, unexpected response.");
-            break;
+                Console.WriteLine("Error, unexpected response.");
+                break;
         }
     }
     public override string ExportGoal()

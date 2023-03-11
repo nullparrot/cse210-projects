@@ -1,28 +1,35 @@
-public class Menu{
+public class Menu
+{
     private string _choice;
     private int _choiceNumber;
     private List<string> _options = new List<string>();
 
-    public Menu(params string[] options){
+    public Menu(params string[] options)
+    {
         foreach (string option in options)
         {
             _options.Add(option);
         }
     }
 
-    public Menu(List<string> options){
+    public Menu(List<string> options)
+    {
         _options = options;
     }
-    public List<string> ListOptions(){
+    public List<string> ListOptions()
+    {
         return _options;
     }
-    public string GetChoice(){
+    public string GetChoice()
+    {
         return _choice;
     }
-    public int GetChoiceNumber(){
+    public int GetChoiceNumber()
+    {
         return _choiceNumber;
     }
-    public string ChooseOne(string prompt){
+    public string ChooseOne(string prompt)
+    {
         Console.WriteLine(prompt);
         int tempcount = 1;
         foreach (string option in _options)
@@ -31,8 +38,8 @@ public class Menu{
             tempcount++;
         }
         Console.Write("Choice (ex. 1): ");
-        _choiceNumber=int.Parse(Console.ReadLine());
-        _choice = _options[_choiceNumber-1];
+        _choiceNumber = int.Parse(Console.ReadLine());
+        _choice = _options[_choiceNumber - 1];
         return _choice;
     }
 }

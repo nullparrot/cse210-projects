@@ -1,9 +1,12 @@
-public class SimpleGoal : Goal{
+public class SimpleGoal : Goal
+{
     private bool _complete;
-    public SimpleGoal(string goal, int value, bool complete):base(goal,value){
+    public SimpleGoal(string goal, int value, bool complete) : base(goal, value)
+    {
         _complete = complete;
     }
-    public SimpleGoal(){
+    public SimpleGoal()
+    {
         Console.Clear();
         Console.WriteLine("A simple goal is something you need to complete just once.");
         Console.WriteLine("What would you like to make a simple goal for?");
@@ -14,29 +17,33 @@ public class SimpleGoal : Goal{
         SetValue(int.Parse(Console.ReadLine()));
         _complete = false;
     }
-    public void SetComplete(bool copmlete){
+    public void SetComplete(bool copmlete)
+    {
         _complete = copmlete;
     }
-    public bool GetComplete(){
+    public bool GetComplete()
+    {
         return _complete;
     }
     public override string DisplayGoal()
     {
-        switch(_complete){
+        switch (_complete)
+        {
             case true:
-            return $"[Complete] - {GetGoal()} - {GetValue()}/{GetValue()} Point(s)";
+                return $"[Complete] - {GetGoal()} - {GetValue()}/{GetValue()} Point(s)";
             case false:
-            return $"[Incomplete] - {GetGoal()} - 0/{GetValue()} Point(s)";
+                return $"[Incomplete] - {GetGoal()} - 0/{GetValue()} Point(s)";
         }
-        
+
     }
     public override int GiveReward()
     {
-        switch(_complete){
+        switch (_complete)
+        {
             case true:
-            return GetValue();
+                return GetValue();
             case false:
-            return 0;
+                return 0;
         }
     }
     public override void UpdateGoal()
@@ -44,24 +51,25 @@ public class SimpleGoal : Goal{
         Console.Clear();
         Console.WriteLine(GetGoal());
         Console.Write("Have you completed this goal? (Yes or No)");
-        switch(Console.ReadLine()){
+        switch (Console.ReadLine())
+        {
             case "Yes":
             case "y":
             case "Y":
             case "YES":
             case "yes":
-            _complete = true;
-            break;
+                _complete = true;
+                break;
             case "No":
             case "n":
             case "N":
             case "NO":
             case "no":
-            _complete = false;
-            break;
+                _complete = false;
+                break;
             default:
-            Console.WriteLine("Error, unexpected response.");
-            break;
+                Console.WriteLine("Error, unexpected response.");
+                break;
         }
     }
     public override string ExportGoal()

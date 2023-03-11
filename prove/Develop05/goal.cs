@@ -8,7 +8,8 @@ public abstract class Goal
         _value = value;
     }
 
-    public Goal(){
+    public Goal()
+    {
 
     }
     public void SetValue(int value)
