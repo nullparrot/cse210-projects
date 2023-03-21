@@ -1,7 +1,7 @@
 public class Menu
 {
     private string _choice;
-    private int _choiceNumber;
+    private int _choiceNumber = -1;
     private List<string> _options = new List<string>();
 
     public Menu(params string[] options)
@@ -39,7 +39,13 @@ public class Menu
         }
         Console.Write("Choice (ex. 1): ");
         _choiceNumber = int.Parse(Console.ReadLine());
-        _choice = _options[_choiceNumber - 1];
+        try{
+            _choice = _options[_choiceNumber - 1];
+        }
+        catch(Exception e){
+            _choice = e.ToString();
+            _choiceNumber = -2;
+        }
         return _choice;
     }
 }
