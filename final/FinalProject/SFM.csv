@@ -1,0 +1,22 @@
+Material,HSS,CB
+Aluminum,600,1200
+Brass/Bronze,300,350
+"Iron-Cast, soft",,500
+"Iron-Cast, hard",,350
+Iron-Ductile,125,400
+Iron-Malleable,140,600
+Magnesium,600,1400
+Monel/High Nickel Steel,,300
+Plastics,1200,1200
+Plastic-Glass Filled,,800
+Refractory Alloys,,400
+303 Stainless,80,325
+304 Stainless,65,200
+18-8 Stainless,80,325
+17-4 Stainless,75,200
+Steel-Tool,60,300
+"Stainless Steel, soft",80,500
+"Stainless Steel, hard",70,450
+Titanium,140,200
+Nickel Based High-Temp Alloys,,100
+Plain Carbon (1018),100,300
