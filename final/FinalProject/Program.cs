@@ -11,6 +11,7 @@ class Program
         do
         {
             Console.Clear();
+            Drilling drilltest = new Drilling();
             if (mainMenu.GetChoiceNumber() == -2){
                         Console.WriteLine("Error! Unexpected input!");
                     }
