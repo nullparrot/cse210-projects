@@ -1,20 +1,20 @@
 public class Drill
 {
-    private float _size;
+    private double _size;
     private string _fraction;
     private string _gauge;
-    private float _metric;
-    public Drill(float size, string fraction, string gauge, float metric)
+    private double _metric;
+    public Drill(double size, string fraction, string gauge, double metric)
     {
         _size = size;
         _fraction = fraction;
         _gauge = gauge;
         _metric = metric;
     }
-    public float GetSize(){
+    public double GetSize(){
         return _size;
     }
-    public void SetSize(float size){
+    public void SetSize(double size){
         _size = size;
     }
     public string GetFraction(){
@@ -29,10 +29,10 @@ public class Drill
     public void SetGauge(string gauge){
         _gauge = gauge;
     }
-    public float GetMetric(){
+    public double GetMetric(){
         return _metric;
     }
-    public void SetMetric(float metric){
+    public void SetMetric(double metric){
         _metric = metric;
     }
 }
