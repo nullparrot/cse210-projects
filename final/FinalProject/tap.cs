@@ -1,18 +1,17 @@
-public class Tap
+public abstract class Tap
 {
     private string _size;
     private string _pitch;
-    private string _tapType;
     private double _minorMin;
     private double _minorMax;
-    public Tap(string size, string pitch, string tapType, double mionrMin, double minorMax)
+    public Tap(string size, string pitch, double mionrMin, double minorMax)
     {
         _size = size;
         _pitch = pitch;
-        _tapType = tapType;
         _minorMin = mionrMin;
         _minorMax = minorMax;
     }
+    public abstract string GetTapName();
     public string GetSize()
     {
         return _size;
@@ -27,15 +26,7 @@ public class Tap
     public void SetPitch(string pitch){
         _pitch = pitch; 
     }
-    public string GetTapType()
-    {
-        return _tapType;
-    }
-    public void SetTapType(string tapType)
-    {
-        _tapType = tapType;
-    }
-    public double GetMinorMin()
+    public virtual double GetMinorMin()
     {
         return _minorMin;
     }
@@ -43,7 +34,7 @@ public class Tap
     {
         _minorMin = minorMin;
     }
-    public double GetMinorMax()
+    public virtual double GetMinorMax()
     {
         return _minorMax;
     }

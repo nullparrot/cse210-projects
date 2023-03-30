@@ -4,43 +4,63 @@ class Program
 {
     static void Main(string[] args)
     {
-        Menu tapMenu = new Menu("View Taps", "Tapping Instructions", "Quit");
-        Menu tapTypeMenu = new Menu("Metric", "ANSI");
-        Console.Clear();
-        bool tappingLoop = true;
+        Menu tapMenu = new Menu("View Taps", "Tapping Instructions", "Change Tap Type");
+        Menu tapTypeMenu = new Menu("Metric", "ANSI", "Quit");
+        bool mainLoop = true;
         string tapType = "ansi";
-        switch (tapTypeMenu.ChooseOne("Metric or ANSI tap?"))
-        {
-            case "Metric":
-                tapType = "metric";
-                break;
-            case "ANSI":
-                tapType = "ansi";
-                break;
-        }
-        Tapping letsTap = new Tapping(tapType);
+
         do
         {
             Console.Clear();
-            if (tapMenu.GetChoiceNumber() == -2)
+            if (tapTypeMenu.GetChoiceNumber() == -2)
             {
                 Console.WriteLine("Error! Unexpected input!");
             }
-            switch (tapMenu.ChooseOne($"Tapping Menu:\nWhat would you like to do?"))
+            switch (tapTypeMenu.ChooseOne("Metric or ANSI tap?"))
             {
-                case "View Taps":
-                    letsTap.DisplayAllTaps();
-                    Console.ReadKey();
+                case "Metric":
+                    tapType = "metric";
                     break;
-                case "Tapping Instructions":
-                    letsTap.CutTap(letsTap.ChooseTap());
-                    Console.ReadKey();
+                case "ANSI":
+                    tapType = "ansi";
                     break;
                 case "Quit":
-                    tappingLoop = false;
+                    mainLoop = false;
                     break;
             }
-        } while (tappingLoop);
+            if (mainLoop)
+            {
+                Tapping letsTap = new Tapping(tapType);
+                bool tappingLoop = true;
+                do
+                {
+                    Console.Clear();
+                    if (tapMenu.GetChoiceNumber() == -2)
+                    {
+                        Console.WriteLine("Error! Unexpected input!");
+                    }
+                    switch (tapMenu.ChooseOne($"{tapTypeMenu.GetChoice()} Tapping Menu:\nWhat would you like to do?"))
+                    {
+                        case "View Taps":
+                            Console.Clear();
+                            letsTap.DisplayAllTaps();
+                            Console.ReadKey();
+                            break;
+                        case "Tapping Instructions":
+                            Console.Clear();
+                            letsTap.CutTap(letsTap.ChooseTap());
+                            Console.ReadKey();
+                            break;
+                        case "Change Tap Type":
+                            tappingLoop = false;
+                            break;
+                    }
+                } while (tappingLoop);
+            }
+
+        } while (mainLoop);
+
+
 
     }
 }
